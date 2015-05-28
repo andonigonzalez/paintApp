@@ -20,55 +20,33 @@ function init(){
 	ctx.fillRect (0, 0, canvasW, canvasH);
 	
 	/*DIBUJAR*/
-	/*MOVIL*/
-	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){			
-		canvas.addEventListener("touchstart", inicio, false);
-		canvas.addEventListener("touchmove", movimiento, false);
-		canvas.addEventListener("touchend", fin, false);
-		function inicio(e){
-			e.preventDefault();
-			ctx.beginPath();
-			ctx.strokeStyle = color;
-			ctx.lineWidth = ancho;
-			ctx.moveTo(e.touches[0].pageX, e.touches[0].pageY);
-			ctx.arc(e.touches[0].pageX, e.touches[0].pageY, .3, 0,2*Math.PI, false);
-			ctx.fillStyle = color;
-			ctx.fill();
-		}
-		function movimiento(e){
-			ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY);
-			ctx.stroke();
-		}
-		function fin(){
-			ctx.closePath();
-		}
+	canvas.addEventListener("touchstart", inicio, false);
+	canvas.addEventListener("touchmove", movimiento, false);
+	canvas.addEventListener("touchend", fin, false);
+	function inicio(e){
+		e.preventDefault();
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		ctx.lineWidth = ancho;
+		ctx.moveTo(e.touches[0].pageX, e.touches[0].pageY);
+		ctx.arc(e.touches[0].pageX, e.touches[0].pageY, .3, 0, 2*Math.PI, false);
+		ctx.fillStyle = color;
+		ctx.fill();
 	}
-	/*ORDENADOR*/
-	else{
-		$("#canvas").mousedown(function(e){
-			drawing = true;
-			ctx.strokeStyle = color;
-			ctx.lineWidth = ancho;
-			ctx.beginPath();
-			ctx.moveTo(e.clientX, e.clientY);
-		});
-		$("#canvas").mousemove(function(e){
-			if(drawing){
-				ctx.lineTo(e.clientX, e.clientY);
-				ctx.stroke();
-			}
-		});
-		$("#canvas").mouseup(function(){
-			drawing = false;
-			ctx.closePath();
-		});
+	function movimiento(e){
+		ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY);
+		ctx.stroke();
+	}
+	function fin(){
+		ctx.closePath();
 	}
 	
 	/*BOTONES*/
 	$("#limpiar").click(function(){
 		ctx.fillStyle = "#fff";
 		ctx.fillRect (0, 0, canvasW, canvasH);
-		color: $("#color").val();
+		color = $("#color").val();
+		ancho = 3;
 	});
 	$("#borrar").click(function(){
 		color = "#fff";
@@ -85,7 +63,7 @@ function init(){
 	$("#guardar").click(function(){
 		window.canvas2ImagePlugin.saveImageDataToLibrary(
 			function(msg){
-				alert("guardado correctamente");
+				alert("Guardado correctamente");
 			},
 			function(err){
 				alert(err);

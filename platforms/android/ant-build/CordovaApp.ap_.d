@@ -30,6 +30,7 @@ D:\andoni\paintApp\platforms\android\assets\www\js \
 D:\andoni\paintApp\platforms\android\assets\www\phonegap.js \
 D:\andoni\paintApp\platforms\android\assets\www\plugins \
 D:\andoni\paintApp\platforms\android\assets\www\css\estilos.css \
+D:\andoni\paintApp\platforms\android\assets\www\img\dos.jpg \
 D:\andoni\paintApp\platforms\android\assets\www\js\codigo.js \
 D:\andoni\paintApp\platforms\android\assets\www\js\jquery.js \
 D:\andoni\paintApp\platforms\android\assets\www\plugins\org.devgeeks.Canvas2ImagePlugin \
